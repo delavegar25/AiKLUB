@@ -26,6 +26,11 @@ async def on_message(message):
         
     await bot.process_commands(message)
     
+@bot.command(name = "ping")
+
+async def ping(ctx):
+    await ctx.channel.send("pong")
+    
 @bot.command (name="ping")
 
 async def print(ctx, *args):
@@ -35,4 +40,5 @@ async def print(ctx, *args):
         response = response + " " + arg 
         
     await ctx.channel.send(response)
+
 bot.run(DISCORD_TOKEN)
