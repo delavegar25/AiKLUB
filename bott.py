@@ -10,6 +10,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
+Text = os.getenv("Text")
 
 bot = discord.Client()
 
@@ -32,4 +33,5 @@ async def on_message(message):
     if message.content == "hello":
         await message.channel.send("hi, welcome")
         
-bot.run(DISCORD_TOKEN)  
+bot.run(DISCORD_TOKEN)
+bot.run(Text)  
