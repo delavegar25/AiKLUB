@@ -24,7 +24,7 @@ for guild in bot.guilds:
     
     guild_count = guild_count + 1
     
-    print("Ai server is in" + str(guild_count) + "guilds.")
+    print("Ai cub is in" + str(guild_count) + "guilds.")
     
 # event listener for when a new message is sent to a channel.
 @bot.event
