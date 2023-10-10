@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 
 # loads the dotenv file
 # import commands from the discord.ext module.
-from discord.ext import commands
+
 load_dotenv()
 
 DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
