@@ -12,33 +12,11 @@ from dotenv import load_dotenv
 from discord.ext import commands
 load_dotenv()
 
-DISCORD_TOKEN = os.getenv("DISCORD_TOKEN")
-intents = discord.intents.default()
+DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
 
-# creates a new bot object with a specified prefix.
-bot = commands.Bot(command_prefix="$", intents=intents)
+client = discord.Client()
+@client.event 
+async def on_ready():
+    print(f'{client.user} has connected to Discord!')
     
-# on_message() event listener.
-@bot.event
-async def on_message(message):
-    if message.content == "hello":
-        await message.channel.send("hi, welcome to the AI server")
-        
-    await bot.process_commands(message)
-    
-@bot.command(name = "ping")
-
-async def ping(ctx):
-    await ctx.channel.send("pong")
-    
-@bot.command (name="ping")
-
-async def print(ctx, *args):
-    response = ""
-    
-    for arg in args:
-        response = response + " " + arg 
-        
-    await ctx.channel.send(response)
-
-bot.run(DISCORD_TOKEN)
+client.run(DISCORD_TOKEN)
