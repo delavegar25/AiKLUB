@@ -8,7 +8,6 @@ import os
 from dotenv import load_dotenv
 
 # loads the dotenv file
-# import commands from the discord.ext module.
 
 load_dotenv()
 
