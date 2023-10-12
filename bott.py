@@ -1,8 +1,8 @@
-# import discord.py ALLOWS ACCESS TO DISCORD'S API
-
-import discord
-# Import the os module
+  # Import the os module that the functions interacts with the operating system
 import os
+
+# import discord.py ALLOWS ACCESS TO DISCORD'S API
+import discord
 
 # import load_dotenv function from dotenv module.
 from dotenv import load_dotenv
@@ -12,10 +12,19 @@ from dotenv import load_dotenv
 load_dotenv()
 
 DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
+DISCORD_GUILD = os.getenv('DISCORD_GUILD')
 
-client = discord.Client()
-@client.event 
+bot = discord.Client(intents='')
+
+@bot.event 
 async def on_ready():
-    print(f'{client.user} has connected to Discord!')
-    
-client.run(DISCORD_TOKEN)
+    for guild in bot.guilds:
+        if guild.name == DISCORD_GUILD:
+            break 
+        
+    print(
+        f'{bot.user} is connected to the following guild:\n'
+        f'{guild.name} (id: {guild.id})'
+        )
+             
+bot.run(DISCORD_TOKEN)
