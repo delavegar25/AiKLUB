@@ -12,19 +12,16 @@ from dotenv import load_dotenv
 load_dotenv()
 
 DISCORD_TOKEN = os.getenv('DISCORD_TOKEN')
-DISCORD_GUILD = os.getenv('DISCORD_GUILD')
 
-bot = discord.Client(intents='')
+class MyClient (discord.Client): 
+ async def on_ready(self):
+    print(f'logged on as {self.user}')
+  
+async def on_message(self, message):
+  print(f'Message from {message.auth}')
 
-@bot.event 
-async def on_ready():
-    for guild in bot.guilds:
-        if guild.name == DISCORD_GUILD:
-            break 
-        
-    print(
-        f'{bot.user} is connected to the following guild:\n'
-        f'{guild.name} (id: {guild.id})'
-        )
-             
-bot.run(DISCORD_TOKEN)
+intents = discord.Intents.default()
+intents.message_content = True
+
+client = MyClient(intents=intents)
+client.run(DISCORD_TOKEN)
