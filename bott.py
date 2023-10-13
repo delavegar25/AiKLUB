@@ -25,3 +25,5 @@ intents.message_content = True
 
 client = MyClient(intents=intents)
 client.run(DISCORD_TOKEN)
+
+#interaction
